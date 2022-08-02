@@ -1,0 +1,23 @@
+<p style="color: green"><%= notice %></p>
+<%= render @account %>
+
+<h2>Details</h2>
+  <% @nominees.each do |nominee|%>
+    <strong>Name:</strong>
+    <%= nominee.nominee_name %><br>
+    <strong>User Id:</strong>
+    <%= nominee.user_id %><br>
+    <strong>Nominee Percentage: </strong>
+    <%= nominee.percentage %><br>
+    <hr>
+<% end %>
+<br>
+
+<div>
+  <%= link_to "Edit this account", edit_account_path(@account) %> |
+  <%= link_to "Back to accounts", accounts_path %>
+
+  
+  <%#= button_to 'Destroy', account_path, method: :delete,
+  form: {data: {turbo_confirm: 'Are you sure?'}} %>
+</div>

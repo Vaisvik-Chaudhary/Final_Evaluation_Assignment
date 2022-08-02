@@ -1,0 +1,36 @@
+<%= form_with(model: account) do |form| %>
+
+  <% if account.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(account.errors.count, "error") %> prohibited this account from being saved:</h2>
+
+      <ul>
+        <% account.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <br>
+  <hr>
+  <div>
+   <h3><%= form.label :name, style: "display: block"%></h3>
+    <%= form.text_field :name%>
+  </div>
+    <h3><%= form.label :balance, style: "display: block"%></h3>
+    <%= form.number_field :balance%>
+ <h3>Nominees</h3>
+   <div>
+      <%= form.fields_for :nominees do |nominee| %>
+        <%= render "nominee_fields", :f => nominee %>
+      <% end %>
+      <br>
+      <div>
+        <%= link_to_add_association "Add Nominee", form, :nominees %> 
+      </div>
+    </div>
+    <br>
+  </div>
+    <%= form.submit %>
+  </div>
+<% end %>

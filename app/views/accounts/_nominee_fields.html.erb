@@ -1,0 +1,13 @@
+<div class="nested-fields">
+   <%= f.label "Nominee's name" %>
+   <%= f.text_field :nominee_name %><br>
+   <%= f.label "User" %>
+
+<%= f.select :user_id, User.where.not(id: current_user.id).collect { |user| [user.id] } %><br>
+     <%= f.label "percentage" %>
+   <%= f.number_field :percentage, max: 100 %><br>
+   <%= link_to_remove_association "Delete", f %>
+  <%#=  link_to_remove_association 'remove this', f,
+  {wrapper_class: 'nested-fields' }%>
+   <hr>
+</div>
